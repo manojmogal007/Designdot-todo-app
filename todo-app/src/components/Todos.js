@@ -11,8 +11,13 @@ const Todos = () => {
   const [newtodo,setNewtodo]=useState({todo:'',isCompleted:false})
   const [call,setCall]=useState(false)
   const [search,setSearch]=useState('')
+  const [isToggled, setIsToggled] = useState(false);
 
 // console.log(state)
+
+  const toggleButton = () => {
+    setIsToggled(!isToggled);
+  };
 
   const handlechange=(e)=>{
     const {name,value}=e.target
@@ -83,7 +88,13 @@ console.log(search)
 
 const {todo}=newtodo
   return (
-    <div className={styles.container}>
+    <div className={isToggled?styles.container:styles._container}>
+      <div className={`${styles.slidertoggle} ${isToggled ? styles.toggled : ''}`} onClick={toggleButton}>
+          <span>Dark</span>
+          <span>Light</span>
+        <div className={`${styles.slider} ${isToggled ? styles.right : styles.left}`} >
+      </div>
+      </div>
       <h2>Todo App</h2>
       <div className={styles.search}>
         <input placeholder='Search todo here...' type='text' value={search} onChange={handlesearchtext} ></input>
