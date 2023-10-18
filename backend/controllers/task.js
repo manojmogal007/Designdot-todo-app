@@ -4,9 +4,15 @@ const {Todomodel}=require('../model/task.model')
 
 
 exports.gettasks=async(req,res)=>{
+    const query=req.query
     try{
-        const data=await Todomodel.find()
-        res.status(200).json({'msg':'All tasks','todos':data})
+        if(query.todo){
+            const data=await Todomodel.find({todo:{$regex:`${query.todo}`}})
+            res.status(200).json({'msg':'Search tasks','todos':data})
+        }else{
+            const data=await Todomodel.find()
+            res.status(200).json({'msg':'All tasks','todos':data})
+        }
     }catch(err){
         console.log(err)
         res.status(400).json({'msg':'Error! tasks not found'})
