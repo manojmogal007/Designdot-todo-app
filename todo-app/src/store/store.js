@@ -1,6 +1,6 @@
 
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import thunk from 'redux-thunk'; // Import Redux Thunk middleware
+import thunk from 'redux-thunk'; 
 import todosreducer from './slice';
 
 export const store = configureStore({
