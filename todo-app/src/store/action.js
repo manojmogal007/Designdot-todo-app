@@ -2,7 +2,7 @@
 import axios from 'axios'
 import { alltodos,deletefromlist } from './slice';
 
-const url="http://localhost:6060"
+const url="https://busy-scrubs-worm.cyclic.app"
 
 export const fetchtodos = (todo) => async (dispatch) => {
   let updatedurl=url  
